@@ -1,0 +1,72 @@
+<div class="row post-detail" ng-controller="postCtrl">
+	<div class="col-lg-9 post-detail-content">
+		<div class="row post-detail-group">
+			<div class="row">
+				<img src="{{post.img}}" alt="" class="img-responsive post-detail-img">
+			</div>
+			
+			<div class="row tag-team">
+				<div class="pull-left">
+					<a class="btn btn-default" href="{{post.demo}}"><i class="fa fa-eye"></i> Demo</a>
+					<a class="btn btn-default" href="{{post.code}}"><i class="fa fa-code"></i> Code</a>
+				</div>
+				<div class="pull-right">
+					<button class="btn btn-default" ng-repeat="tag in post.tags" ui-sref="tag({tag: tag})">{{tag}}</button>
+				</div>
+			</div>
+			<h2 class="text-center">
+				{{post.title}}
+			</h2>
+			<div class="post-info">
+				<ul>
+					<li><img src="{{post.auth.avatar}}" alt="" class="auth-img"/></li>
+					<li><span class="post-info-auth-name">{{post.auth.username}}</span></li>
+					<li><i class="fa fa-calendar-o"></i> {{ post.create_at | date : format : timezone}}</li>
+					<li><i class="fa fa-eye"></i> {{post.views}}</li>
+					<!-- <li>Comments</li> -->
+				</ul>
+			</div>
+		</div>
+		<div class="row post-detail-group">
+			<div class="row detail-content" ng-bind-html="renderHtml(post.content)"></div>
+			<div class="row tag-team">
+				<div class="pull-left">
+					<a class="btn btn-default" href="{{post.demo}}"><i class="fa fa-eye"></i> Demo</a>
+					<a class="btn btn-default" href="{{post.code}}"><i class="fa fa-code"></i> Code</a>
+				</div>
+				<div class="pull-right">
+					<button class="btn btn-default" ng-repeat="tag in post.tags" ui-sref="tag({id: tag})">{{tag}}</button>
+				</div>
+			</div>
+		</div>
+		<div class="row post-detail-group">
+			<div class="row auth-info">
+				<div class="col-lg-3">
+					<img src="{{post.auth.avatar}}" alt="" class="auth-info-img">
+				</div>
+				<div class="col-lg-9">
+					<h3>{{post.auth.username}}</h3>
+					<span>
+						{{post.auth.desc}}
+					</span>
+					<div class="auth-social">
+						<a href="{{post.auth.social.facebook}}"><i class="fa fa-facebook"></i></a>
+						<a href="{{post.auth.social.twitter}}"><i class="fa fa-twitter"></i></a>
+						<a href="{{post.auth.social.gplus}}"><i class="fa fa-google-plus"></i></a>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+	</div>
+	<div class="col-lg-3 post-detail-right">
+		<h4 class="text-center">
+			Các tác giả
+		</h4>
+		<hr>
+		<div class="row auth-item" ng-repeat="auth in auths" ui-sref="auth({id: auth.username})">
+			<img src="{{auth.avatar}}" alt="" class="auth-img pull-left"/>
+			<span class="auth-item-name">{{auth.fullname}}</span>
+		</div>
+	</div>
+</div>

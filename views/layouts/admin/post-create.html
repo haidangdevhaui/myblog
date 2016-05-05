@@ -1,0 +1,88 @@
+<div ng-controller="admin.postCtrl">
+	
+	<div class="row">
+		<div class="card-box">
+			<form class="form-horizontal" method="post" ng-submit="createPost(post)" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label class="col-md-2 control-label">
+                        Tiêu đề {{dataCates.length}}
+                    </label>
+                    <div class="col-md-10">
+                        <input class="form-control" ng-model="post.title" type="text" required="">
+                        </input>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-2 control-label">
+                        Danh mục
+                    </label>
+                    <div class="col-md-10">
+                        <select ng-model="post.category" class="form-control">
+                        	<option value="">---Chọn danh mục bài viết---</option>
+                            <option ng-repeat="category in categories" value="{{category._id}}">{{category.name}}</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-2 control-label">
+                        Gắn thẻ
+                    </label>
+                    <div class="col-md-10">
+                        <input class="form-control" ng-model="post.tags" type="text" required="">
+                        </input>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-2 control-label">
+                        Mô tả
+                    </label>
+                    <div class="col-md-10">
+                       <textarea class="form-control" ng-model="post.desc"></textarea>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-2 control-label">
+                        Code
+                    </label>
+                    <div class="col-md-10">
+                       <input class="form-control" ng-model="post.code" type="text" required="">
+                        </input>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-2 control-label">
+                        Demo
+                    </label>
+                    <div class="col-md-10">
+                       <input class="form-control" ng-model="post.demo" type="text" required="">
+                        </input>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-2 control-label">
+                        Nội dung
+                    </label>
+                    <div class="col-md-10">
+                        <div ckeditor="options" ng-model="post.content" ready="onReady()"></div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-2 control-label">
+                        Ảnh bài viết
+                    </label>
+                    <div class="col-md-10">
+                        <input type="file" file-model="post.file">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-2 control-label">
+                        
+                    </label>
+                    <div class="col-md-10">
+                        <button class="btn btn-info" type="submit">Đăng bài</button>
+                    </div>
+                </div>
+            </form>
+		</div>
+	</div>
+</div>

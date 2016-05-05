@@ -1,0 +1,72 @@
+<div class="row" ng-controller="userCtrl">
+	<div class="col-lg-8" style="margin-bottom: 10px;">
+		<h3>Đăng ký trở thành thành viên của Blog</h3>
+		<form ng-submit="register(user)" class="form-horizontal">
+			<div class="form-group">
+                <label class="col-md-2 control-label">
+                    Họ và tên
+                </label>
+                <div class="col-md-10">
+                    <input class="form-control" ng-model="user.fullname" type="text">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-2 control-label">
+                    Ngày sinh
+                </label>
+                <div class="col-md-10">
+                    <input class="form-control" ng-model="user.birth" type="text">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-2 control-label">
+                    Địa chỉ
+                </label>
+                <div class="col-md-10">
+                    <input class="form-control" ng-model="user.province" type="text">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-2 control-label">
+                    Email
+                </label>
+                <div class="col-md-10">
+                    <input class="form-control" ng-model="user.email" type="text">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-2 control-label">
+                    Tên đăng nhập
+                </label>
+                <div class="col-md-10">
+                    <input class="form-control" ng-model="user.username" type="text">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-2 control-label">
+                    Mật khẩu
+                </label>
+                <div class="col-md-10">
+                    <input class="form-control" ng-model="user.password" type="password">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-2 control-label">
+                    Giới thiệu
+                </label>
+                <div class="col-md-10">
+                    <textarea class="form-control" ng-model="user.desc"></textarea>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-2 control-label">
+                    Avatar
+                </label>
+                <div class="col-md-10">
+                    <input file-model="user.file" type="file">
+                </div>
+            </div>
+			<button type="submit" class="btn btn-warning form-control">Đăng ký</button>
+		</form>
+	</div>
+</div>

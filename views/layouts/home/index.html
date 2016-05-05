@@ -1,0 +1,86 @@
+<div class="row post-list" ng-controller="homeCtrl">
+    <h4 class="text-center" ng-if="posts.length == 0">Không có bài viết nào</h4>
+    <div class="col-lg-4 post-item" ng-repeat="post in posts">
+        <div ui-sref="post-detail({id: post.url})" class="post-img" style="background-image: url('{{post.img}}')">
+        </div>
+        <div class="post-title">
+            <a ui-sref="post-detail({id: post.url})">{{post.title}}</a>
+        </div>
+        <div class="row time-views">
+            <div class="pull-left">
+                <i class="fa fa-clock-o">
+                </i>
+                {{post.crt}}
+            </div>
+            <div class="pull-right">
+                <i class="fa fa-eye">
+                </i>
+                {{post.views}}
+            </div>
+        </div>
+        <div class="row">
+            <div class="post-tags pull-left">
+                <i class="fa fa-tags">
+                </i>
+                :
+                <a href="#" class="label label-info" ng-repeat="tag in post.tags" ui-sref="tag({id: tag})">
+                    {{tag}}
+                </a>
+            </div>
+            <div class="pull-right">
+                <img src="{{post.auth.avatar}}" alt="" class="auth-img"/>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row view-more" ng-if="posts.length > 9">
+    <center>
+        <button class="btn btn-warning btn-lg">
+            Xem thêm
+        </button>
+    </center>
+</div>
+<div class="row popular">
+    <h3 class="text-center">
+        BÀI VIẾT NỔI BẬT
+    </h3>
+    <div class="col-lg-3 popular-item">
+        <img src="/public/images/post.jpg" alt="" class="pull-left"/>
+        <div class="pull-left">
+            post title
+        </div>
+    </div>
+</div>
+<div class="row service">
+    <h3 class="text-center">
+        DỊCH VỤ
+    </h3>
+    <div class="col-lg-3 service-item">
+        <i class="fa fa-code fa-4x">
+        </i>
+        <div>
+            CLEAN CODE
+        </div>
+    </div>
+    <div class="col-lg-3 service-item">
+        <i class="fa fa-bug fa-4x">
+        </i>
+        <div>
+            MULTI BUG
+        </div>
+    </div>
+    <div class="col-lg-3 service-item">
+        <i class="fa fa-money fa-4x">
+        </i>
+        <div>
+            MUCH MONEY
+        </div>
+    </div>
+    <div class="col-lg-3 service-item">
+        <i class="fa fa-area-chart fa-4x">
+        </i>
+        <div>
+            CHART EASY
+        </div>
+    </div>
+</div>

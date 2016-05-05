@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app" ng-controller="mainCtrl">
+	<head>
+		<base href="/" />
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="shortcut icon" sizes="16x16 24x24 32x32 48x48 64x64 96x96" href="/public/images/favicon.png">
+		<title ng-if="!title">Haidangdevhaui's Blog</title>
+		<title>{{title }}</title>
+		<% include includes/libs %>
+		<% include includes/angular-component %>
+	</head>
+	<body>
+		<toaster-container toaster-options="{'time-out': 3000, 'close-button':true, 'position-class': 'toast-top-right'}"></toaster-container>
+		<div class="row main" ui-view="mainView">
+			<div class="search-div">
+				<i class="fa fa-close fa-2x close-search-div"></i>
+				<div class="container">
+					<center>
+						<input type="text" class="form-control search-div-box" placeholder="Tìm kiếm..." ng-model="search" ng-change="searchPost(search)">
+					</center>
+					<div class="col-lg-4 search-result-item" ng-repeat="s in searchDatas" ui-sref="post-detail({id: s.url})" ng-click="clickResult()">
+						<div class="row">
+							<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 result-img" style="background:url('{{s.img}}')">
+							</div>
+							<div class="col-lg-9 col-md-9 col-sm-9 col-xs-9 result-title">
+								{{s.title}}
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-2 left-content">
+				<center>
+				<div class="row img-logo">
+					<img src="/public/images/fullstack-logo.png" alt="" height="150" ui-sref="/">
+				</div>
+				</center>
+				<div class="row category-menu">
+					<ul class="list-category">
+						<li class="menu-active"><i class="fa fa-graduation-cap"></i> TỰ HỌC LẬP TRÌNH</li>
+						<li><i class="fa fa-gamepad"></i> TIỆN ÍCH</li>
+					</ul>
+				</div>
+			</div>
+			<div class="col-lg-offset-2 col-lg-10 content">
+				<nav class="navbar navbar-default" role="navigation">
+					<div class="container-fluid">
+						<div class="navbar-header">
+							<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+								<span class="sr-only">Toggle navigation</span>
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+							</button>
+						</div>
+						<div class="collapse navbar-collapse navbar-ex1-collapse">
+							<ul class="nav navbar-nav navbar-right">
+								<li>
+									<input type="text" class="form-control search-box" placeholder="tìm kiếm">
+								</li>
+								<li ng-if="!user"><a ui-sref="register" class="label label-danger nav-btn">Đăng ký</a></li>
+								<li ng-if="!user"><a ui-sref="login" class="label label-primary nav-btn">Đăng nhập</a></li>
+								<li class="dropdown" ng-if="user">
+									<a href="#" class="dropdown-toggle" data-toggle="dropdown">{{user.username}} <b class="caret"></b></a>
+									<ul class="dropdown-menu">
+										<li ng-if="user.auth == 1 || user.auth == 2"><a ng-click="goToAdmin()" href="#"><i class="fa fa-dashboard"></i> Bảng điều khiển</a></li>
+										<li><a ui-sref="profile"><i class="fa fa-user"></i> Thông tin cá nhân</a></li>
+										<li><a ng-click="logout()" href="#"><i class="fa fa-sign-out"></i> Đăng xuất</a></li>
+									</ul>
+								</li>
+							</ul>
+						</div><!-- /.navbar-collapse -->
+					</div>
+				</nav>
+				<div class="row menu">
+					<div class="col-lg-2 category-item" ng-repeat="category in categories" id="cate-{{category._id}}" ui-sref="category({id: category.url})" ng-click="clickCate()">
+						<style>
+							#cate-{{category._id}}{
+								background: {{category.background.default}};
+								color: {{category.color.default}};
+							}
+							#cate-{{category._id}}:hover{
+								background: {{category.background.hover}};
+								color: {{category.color.hover}};
+							}
+						</style>
+						<center>
+						<img src="{{category.icon}}" alt="" class="category-img"><br/>
+						<span class="category-name">{{category.name}}</span>
+						</center>
+					</div>
+				</div>
+
+				<div ui-view="homeView" class="content-view">
+						
+				</div>
+				
+				<div class="row footer">
+					<div class="col-lg-4">
+						<h4>Haidangdevhaui.net</h4>
+						<p><i class="fa fa-mobile"></i> +841655 071 008</p>
+						<p><i class="fa fa-envelope"></i> haidangdevhaui@gmail.com</p>
+						<p><i class="fa fa-map-marker"></i> Nhổn - Từ Liêm - Hà Nội</p>
+						<p><i class="fa fa-"></i></p>
+						<p><i class="fa fa-"></i></p>
+					</div>
+					<div class="col-lg-4">
+						<h4>Full Stack Development</h4>
+						<img src="/public/images/fullstack-logo.png" alt="">
+					</div>
+					<div class="col-lg-4">
+						<h4>Contact Me</h4>
+						<form action="" class="form-contact">
+							<div class="input-group">
+                            	<div class="input-group-addon"><i class="fa fa-user"> </i></div>
+                            	<input type="text" class="form-control" placeholder="Your name">
+                            </div>
+							<div class="input-group">
+                            	<div class="input-group-addon"><i class="fa fa-envelope"></i></div>
+                            	<input type="text" class="form-control" placeholder="Email">
+                            </div>
+                            <textarea name="" class="form-control" placeholder="Content"></textarea>
+                            <button class="btn btn-danger form-control btn-send-contact-mail">Send</button>
+						</form>
+					</div>
+					<div class="col-lg-12">
+						<center>
+							<div class="footer-social">
+								<i class="fa fa-facebook fa-2x"></i>
+								<i class="fa fa-twitter fa-2x"></i>
+								<i class="fa fa-google-plus fa-2x"></i>
+							</div>
+						</center>
+					</div>
+				</div>
+				<div class="row copyright">
+					<center>
+						© 2016 haidangdevhaui.net, DEVOPS - Fullstack Development.
+					</center>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
