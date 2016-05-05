@@ -18,9 +18,9 @@
 				{{post.title}}
 			</h2>
 			<div class="post-info">
-				<ul>
-					<li><img src="{{post.auth.avatar}}" alt="" class="auth-img"/></li>
-					<li><span class="post-info-auth-name">{{post.auth.username}}</span></li>
+				<ul ng-repeat="auth in auths" ng-if="auth._id == post.auth">
+					<li><img src="{{API_BASE + auth.avatar}}" alt="" class="auth-img"/></li>
+					<li><span class="post-info-auth-name">{{auth.fullname}}</span></li>
 					<li><i class="fa fa-calendar-o"></i> {{ post.create_at | date : format : timezone}}</li>
 					<li><i class="fa fa-eye"></i> {{post.views}}</li>
 					<!-- <li>Comments</li> -->
@@ -40,19 +40,19 @@
 			</div>
 		</div>
 		<div class="row post-detail-group">
-			<div class="row auth-info">
+			<div class="row auth-info" ng-repeat="auth in auths" ng-if="auth._id == post.auth">
 				<div class="col-lg-3">
-					<img src="{{API_BASE + post.auth.avatar}}" alt="" class="auth-info-img">
+					<img src="{{API_BASE + auth.avatar}}" alt="" class="auth-info-img">
 				</div>
 				<div class="col-lg-9">
-					<h3>{{post.auth.fullname}}</h3>
+					<h3>{{auth.fullname}}</h3>
 					<span>
-						{{post.auth.desc}}
+						{{auth.desc}}
 					</span>
 					<div class="auth-social">
-						<a href="{{post.auth.social.facebook}}"><i class="fa fa-facebook"></i></a>
-						<a href="{{post.auth.social.twitter}}"><i class="fa fa-twitter"></i></a>
-						<a href="{{post.auth.social.gplus}}"><i class="fa fa-google-plus"></i></a>
+						<a href="{{auth.social.facebook}}"><i class="fa fa-facebook"></i></a>
+						<a href="{{auth.social.twitter}}"><i class="fa fa-twitter"></i></a>
+						<a href="{{auth.social.gplus}}"><i class="fa fa-google-plus"></i></a>
 					</div>
 				</div>
 			</div>
