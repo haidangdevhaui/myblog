@@ -42,7 +42,7 @@
 		<div class="row post-detail-group">
 			<div class="row auth-info">
 				<div class="col-lg-3">
-					<img src="{{post.auth.avatar}}" alt="" class="auth-info-img">
+					<img src="{{API_BASE + post.auth.avatar}}" alt="" class="auth-info-img">
 				</div>
 				<div class="col-lg-9">
 					<h3>{{post.auth.username}}</h3>
@@ -65,7 +65,7 @@
 		</h4>
 		<hr>
 		<div class="row auth-item" ng-repeat="auth in auths" ui-sref="auth({id: auth.username})">
-			<img src="{{auth.avatar}}" alt="" class="auth-img pull-left"/>
+			<img src="{{API_BASE + auth.avatar}}" alt="" class="auth-img pull-left"/>
 			<span class="auth-item-name">{{auth.fullname}}</span>
 		</div>
 	</div>
