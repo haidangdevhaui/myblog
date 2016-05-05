@@ -27,8 +27,8 @@
                     {{tag}}
                 </a>
             </div>
-            <div class="pull-right">
-                <img src="{{post.auth.avatar}}" alt="" class="auth-img"/>
+            <div class="pull-right" ng-repeat="auth in auths" ng-if="auth._id == post.auth">
+                <img src="{{API_BASE + auth.avatar}}" alt="" class="auth-img"/>
             </div>
         </div>
     </div>
