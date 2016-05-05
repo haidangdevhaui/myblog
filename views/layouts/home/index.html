@@ -1,7 +1,7 @@
 <div class="row post-list" ng-controller="homeCtrl">
     <h4 class="text-center" ng-if="posts.length == 0">Không có bài viết nào</h4>
     <div class="col-lg-4 post-item" ng-repeat="post in posts">
-        <div ui-sref="post-detail({id: post.url})" class="post-img" style="background-image: url('{{API_BASE + post.img}}')">
+        <div ui-sref="post-detail({id: post.url})" class="post-img" style="background-image: url('{{post.img}}')">
         </div>
         <div class="post-title">
             <a ui-sref="post-detail({id: post.url})">{{post.title}}</a>
@@ -28,7 +28,7 @@
                 </a>
             </div>
             <div class="pull-right" ng-repeat="auth in auths" ng-if="auth._id == post.auth">
-                <img src="{{API_BASE + auth.avatar}}" alt="" class="auth-img"/>
+                <img src="{{auth.avatar}}" alt="" class="auth-img"/>
             </div>
         </div>
     </div>
