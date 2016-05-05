@@ -19,7 +19,7 @@
 			</h2>
 			<div class="post-info">
 				<ul ng-repeat="auth in auths" ng-if="auth._id == post.auth">
-					<li><img src="{{API_BASE + auth.avatar}}" alt="" class="auth-img"/></li>
+					<li><img src="{{auth.avatar}}" alt="" class="auth-img"/></li>
 					<li><span class="post-info-auth-name">{{auth.fullname}}</span></li>
 					<li><i class="fa fa-calendar-o"></i> {{ post.create_at | date : format : timezone}}</li>
 					<li><i class="fa fa-eye"></i> {{post.views}}</li>
@@ -42,7 +42,7 @@
 		<div class="row post-detail-group">
 			<div class="row auth-info" ng-repeat="auth in auths" ng-if="auth._id == post.auth">
 				<div class="col-lg-3">
-					<img src="{{API_BASE + auth.avatar}}" alt="" class="auth-info-img">
+					<img src="{{auth.avatar}}" alt="" class="auth-info-img">
 				</div>
 				<div class="col-lg-9">
 					<h3>{{auth.fullname}}</h3>
@@ -65,7 +65,7 @@
 		</h4>
 		<hr>
 		<div class="row auth-item" ng-repeat="auth in auths" ui-sref="auth({id: auth.username})">
-			<img src="{{API_BASE + auth.avatar}}" alt="" class="auth-img pull-left"/>
+			<img src="{{auth.avatar}}" alt="" class="auth-img pull-left"/>
 			<span class="auth-item-name">{{auth.fullname}}</span>
 		</div>
 	</div>
