@@ -18,5 +18,7 @@ app.controller('homeCtrl', ['$scope', '$rootScope', '$state', 'Api' ,function($s
 		});
 	};
 	$scope.getListPost(1, 10);
-	
+	Api.get('users?auth=2').success(function(res){
+	    	$scope.auths = res.data;
+	});
 }])
