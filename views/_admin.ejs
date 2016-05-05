@@ -1,12 +1,11 @@
 <!DOCTYPE html>
 <html lang="en" ng-app="app" ng-controller="mainCtrl">
-<script>var API_BASE = "<% url('/')%>";</script>
 <head>
     <base href="/admin" />
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="shortcut icon" sizes="16x16 24x24 32x32 48x48 64x64 96x96" href="{{API_BASE}}/public/images/favicon.png">
+    <link rel="shortcut icon" sizes="16x16 24x24 32x32 48x48 64x64 96x96" href="/public/images/favicon.png">
     <title ng-if="!title">Haidangdevhaui's Blog</title>
     <title>{{title}}</title>
     <% include includes/libs %>
@@ -18,9 +17,9 @@
     <div class="row main">
         <div ng-controller="adminCtrl">
 
-            <link rel="shortcut icon" href="{{API_BASE}}/public/dashboard/images/favicon.ico">
-            <link href="{{API_BASE}}/public/dashboard/css/core.css" rel="stylesheet" type="text/css" />
-            <link href="{{API_BASE}}/public/dashboard/css/menu.css" rel="stylesheet" type="text/css" />
+            <link rel="shortcut icon" href="/public/dashboard/images/favicon.ico">
+            <link href="/public/dashboard/css/core.css" rel="stylesheet" type="text/css" />
+            <link href="/public/dashboard/css/menu.css" rel="stylesheet" type="text/css" />
             <!-- Navigation Bar-->
             <header id="topnav">
                 <div class="topbar-main">
