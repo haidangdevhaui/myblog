@@ -113,13 +113,7 @@ module.exports = function(app) {
             req.body.data.url = url;
             req.body.data.tags = req.body.data.tags.replace(/ /g, '').split(',');
             req.body.data.img = '/public/uploads/' + req.file.filename;
-            req.body.data.auth = {
-                _id: req.user._id,
-                fullname: req.user.fullname,
-                username: req.user.username,
-                avatar: req.user.avatar,
-                desc: req.user.desc
-            };
+            req.body.data.auth = req.user._id;
             Category.findById(req.body.data.category, function(err, c) {
                 req.body.data.category = {
                     _id: c._id,
