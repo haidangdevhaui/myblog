@@ -18,7 +18,7 @@ app.controller('admin.postCtrl', ['$scope', '$rootScope', '$state', 'Api', 'toas
     //     });
     // }
     $scope.createPost = function(dataPost){
-        if(!dataPost.img){
+        if(!dataPost.file){
             return toaster.pop('warning', '', 'Hãy chọn ảnh cho bài viết!');
         }
         Api.multiPost('admin/post/create', dataPost).success(function(res){
