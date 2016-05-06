@@ -2,18 +2,7 @@ var mongoose = require('mongoose');
 var model = mongoose.Schema({
 	title: String,
 	url: String,
-	auth: {
-		_id: String,
-		fullname: String,
-		username: String,
-		avatar: String,
-		desc: String,
-		social: {
-			facebook: String,
-			twitter: String,
-			gplus: String
-		}
-	},
+	auth: String,
 	category: {
 		_id: String,
 		name: String,
