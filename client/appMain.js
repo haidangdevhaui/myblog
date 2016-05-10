@@ -42,4 +42,5 @@ app.controller('mainCtrl', ['$scope', '$state', '$rootScope', 'Api', '$window', 
 	$rootScope.goToAdmin = function(){
 		$window.location.href = '/admin';
 	}
+	
 }])

@@ -18,9 +18,9 @@
 				{{post.title}}
 			</h2>
 			<div class="post-info">
-				<ul ng-repeat="auth in auths" ng-if="auth._id == post.auth">
-					<li><img src="{{auth.avatar}}" alt="" class="auth-img"/></li>
-					<li><span class="post-info-auth-name">{{auth.fullname}}</span></li>
+				<ul>
+					<li><img src="{{post.auth.avatar}}" alt="" class="auth-img"/></li>
+					<li><span class="post-info-auth-name">{{post.auth.username}}</span></li>
 					<li><i class="fa fa-calendar-o"></i> {{ post.create_at | date : format : timezone}}</li>
 					<li><i class="fa fa-eye"></i> {{post.views}}</li>
 					<!-- <li>Comments</li> -->
@@ -40,7 +40,7 @@
 			</div>
 		</div>
 		<div class="row post-detail-group">
-			<div class="row auth-info" ng-repeat="auth in auths" ng-if="auth._id == post.auth">
+			<div class="row auth-info" ng-repeat="auth in auths" ng-if="post.auth == auth._id">
 				<div class="col-lg-3">
 					<img src="{{auth.avatar}}" alt="" class="auth-info-img">
 				</div>
@@ -57,7 +57,11 @@
 				</div>
 			</div>
 		</div>
-		
+		<!--<div class="row post-detail-group">
+			<pre class="brush:js">
+				var a = 0;
+			</pre>
+		</div>-->
 	</div>
 	<div class="col-lg-3 post-detail-right">
 		<h4 class="text-center">

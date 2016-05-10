@@ -1,6 +1,6 @@
 module.exports = {
     database: {
-        url: "mongodb://root:root@ds011482.mlab.com:11482/devops"
+        url: "mongodb://127.0.0.1/myblog"
     },
     port: 3000
 }
